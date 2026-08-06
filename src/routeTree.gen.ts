@@ -11,8 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FacultyDashboardRouteImport } from './routes/faculty-dashboard'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MarksRouteImport } from './routes/marks'
+import { Route as StudentDashboardRouteImport } from './routes/student-dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,9 +28,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin-dashboard',
+  path: '/admin-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacultyDashboardRoute = FacultyDashboardRouteImport.update({
+  id: '/faculty-dashboard',
+  path: '/faculty-dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -34,39 +48,90 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarksRoute = MarksRouteImport.update({
+  id: '/marks',
+  path: '/marks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentDashboardRoute = StudentDashboardRouteImport.update({
+  id: '/student-dashboard',
+  path: '/student-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-dashboard': typeof AdminDashboardRoute
   '/contact': typeof ContactRoute
+  '/faculty-dashboard': typeof FacultyDashboardRoute
   '/login': typeof LoginRoute
+  '/marks': typeof MarksRoute
+  '/student-dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-dashboard': typeof AdminDashboardRoute
   '/contact': typeof ContactRoute
+  '/faculty-dashboard': typeof FacultyDashboardRoute
   '/login': typeof LoginRoute
+  '/marks': typeof MarksRoute
+  '/student-dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin-dashboard': typeof AdminDashboardRoute
   '/contact': typeof ContactRoute
+  '/faculty-dashboard': typeof FacultyDashboardRoute
   '/login': typeof LoginRoute
+  '/marks': typeof MarksRoute
+  '/student-dashboard': typeof StudentDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/login'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin-dashboard'
+    | '/contact'
+    | '/faculty-dashboard'
+    | '/login'
+    | '/marks'
+    | '/student-dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/login'
-  id: '__root__' | '/' | '/about' | '/contact' | '/login'
+  to:
+    | '/'
+    | '/about'
+    | '/admin-dashboard'
+    | '/contact'
+    | '/faculty-dashboard'
+    | '/login'
+    | '/marks'
+    | '/student-dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin-dashboard'
+    | '/contact'
+    | '/faculty-dashboard'
+    | '/login'
+    | '/marks'
+    | '/student-dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
   ContactRoute: typeof ContactRoute
+  FacultyDashboardRoute: typeof FacultyDashboardRoute
   LoginRoute: typeof LoginRoute
+  MarksRoute: typeof MarksRoute
+  StudentDashboardRoute: typeof StudentDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,11 +150,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin-dashboard': {
+      id: '/admin-dashboard'
+      path: '/admin-dashboard'
+      fullPath: '/admin-dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faculty-dashboard': {
+      id: '/faculty-dashboard'
+      path: '/faculty-dashboard'
+      fullPath: '/faculty-dashboard'
+      preLoaderRoute: typeof FacultyDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -99,14 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marks': {
+      id: '/marks'
+      path: '/marks'
+      fullPath: '/marks'
+      preLoaderRoute: typeof MarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/student-dashboard': {
+      id: '/student-dashboard'
+      path: '/student-dashboard'
+      fullPath: '/student-dashboard'
+      preLoaderRoute: typeof StudentDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
   ContactRoute: ContactRoute,
+  FacultyDashboardRoute: FacultyDashboardRoute,
   LoginRoute: LoginRoute,
+  MarksRoute: MarksRoute,
+  StudentDashboardRoute: StudentDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
