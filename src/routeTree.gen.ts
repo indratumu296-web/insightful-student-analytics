@@ -12,10 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard'
+import { Route as AiChatRouteImport } from './routes/ai-chat'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FacultyDashboardRouteImport } from './routes/faculty-dashboard'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarksRouteImport } from './routes/marks'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as StudentDashboardRouteImport } from './routes/student-dashboard'
 
 const IndexRoute = IndexRouteImport.update({
@@ -31,6 +35,21 @@ const AboutRoute = AboutRouteImport.update({
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/admin-dashboard',
   path: '/admin-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiChatRoute = AiChatRouteImport.update({
+  id: '/ai-chat',
+  path: '/ai-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendanceRoute = AttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -53,6 +72,11 @@ const MarksRoute = MarksRouteImport.update({
   path: '/marks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudentDashboardRoute = StudentDashboardRouteImport.update({
   id: '/student-dashboard',
   path: '/student-dashboard',
@@ -63,20 +87,28 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin-dashboard': typeof AdminDashboardRoute
+  '/ai-chat': typeof AiChatRoute
+  '/analytics': typeof AnalyticsRoute
+  '/attendance': typeof AttendanceRoute
   '/contact': typeof ContactRoute
   '/faculty-dashboard': typeof FacultyDashboardRoute
   '/login': typeof LoginRoute
   '/marks': typeof MarksRoute
+  '/profile': typeof ProfileRoute
   '/student-dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin-dashboard': typeof AdminDashboardRoute
+  '/ai-chat': typeof AiChatRoute
+  '/analytics': typeof AnalyticsRoute
+  '/attendance': typeof AttendanceRoute
   '/contact': typeof ContactRoute
   '/faculty-dashboard': typeof FacultyDashboardRoute
   '/login': typeof LoginRoute
   '/marks': typeof MarksRoute
+  '/profile': typeof ProfileRoute
   '/student-dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesById {
@@ -84,10 +116,14 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin-dashboard': typeof AdminDashboardRoute
+  '/ai-chat': typeof AiChatRoute
+  '/analytics': typeof AnalyticsRoute
+  '/attendance': typeof AttendanceRoute
   '/contact': typeof ContactRoute
   '/faculty-dashboard': typeof FacultyDashboardRoute
   '/login': typeof LoginRoute
   '/marks': typeof MarksRoute
+  '/profile': typeof ProfileRoute
   '/student-dashboard': typeof StudentDashboardRoute
 }
 export interface FileRouteTypes {
@@ -96,30 +132,42 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin-dashboard'
+    | '/ai-chat'
+    | '/analytics'
+    | '/attendance'
     | '/contact'
     | '/faculty-dashboard'
     | '/login'
     | '/marks'
+    | '/profile'
     | '/student-dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/admin-dashboard'
+    | '/ai-chat'
+    | '/analytics'
+    | '/attendance'
     | '/contact'
     | '/faculty-dashboard'
     | '/login'
     | '/marks'
+    | '/profile'
     | '/student-dashboard'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/admin-dashboard'
+    | '/ai-chat'
+    | '/analytics'
+    | '/attendance'
     | '/contact'
     | '/faculty-dashboard'
     | '/login'
     | '/marks'
+    | '/profile'
     | '/student-dashboard'
   fileRoutesById: FileRoutesById
 }
@@ -127,10 +175,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AiChatRoute: typeof AiChatRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  AttendanceRoute: typeof AttendanceRoute
   ContactRoute: typeof ContactRoute
   FacultyDashboardRoute: typeof FacultyDashboardRoute
   LoginRoute: typeof LoginRoute
   MarksRoute: typeof MarksRoute
+  ProfileRoute: typeof ProfileRoute
   StudentDashboardRoute: typeof StudentDashboardRoute
 }
 
@@ -155,6 +207,27 @@ declare module '@tanstack/react-router' {
       path: '/admin-dashboard'
       fullPath: '/admin-dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-chat': {
+      id: '/ai-chat'
+      path: '/ai-chat'
+      fullPath: '/ai-chat'
+      preLoaderRoute: typeof AiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance': {
+      id: '/attendance'
+      path: '/attendance'
+      fullPath: '/attendance'
+      preLoaderRoute: typeof AttendanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -185,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/student-dashboard': {
       id: '/student-dashboard'
       path: '/student-dashboard'
@@ -199,10 +279,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AiChatRoute: AiChatRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  AttendanceRoute: AttendanceRoute,
   ContactRoute: ContactRoute,
   FacultyDashboardRoute: FacultyDashboardRoute,
   LoginRoute: LoginRoute,
   MarksRoute: MarksRoute,
+  ProfileRoute: ProfileRoute,
   StudentDashboardRoute: StudentDashboardRoute,
 }
 export const routeTree = rootRouteImport
